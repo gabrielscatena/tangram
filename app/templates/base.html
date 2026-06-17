@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Tangram AI Feedback Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tangram_lab.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">Tangram<br><span>AI Feedback Lab</span></div>
+    <nav>
+      <a href="/">Overview</a>
+      <a href="/student">Student Playground</a>
+      <a href="/teacher/review">Teacher Review</a>
+      <a href="/annotation">Annotation Studio</a>
+      <a href="/rubrics">Rubrics</a>
+      <a href="/observability">Observability</a>
+    </nav>
+  </aside>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

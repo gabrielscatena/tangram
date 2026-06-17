@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Rubric Manager</h1>
+{% for rubric in rubrics %}
+<div class="card">
+  <h3>{{ rubric.financial_topic }} — {{ rubric.bloom_level }}</h3>
+  <p><strong>Critério:</strong> {{ rubric.criterion }}</p>
+  <p><strong>Esperado:</strong> {{ rubric.expected_concept }}</p>
+  <p><strong>Parcial:</strong> {{ rubric.partial_concept }}</p>
+  <p><strong>Equívoco:</strong> {{ rubric.misconception }}</p>
+  <p class="muted">{{ rubric.bncc_skill }} • {{ rubric.version }}</p>
+</div>
+{% endfor %}
+{% endblock %}

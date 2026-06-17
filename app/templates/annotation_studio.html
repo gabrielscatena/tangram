@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Annotation Studio</h1>
+<p class="muted">Fila de active learning para especialistas pedagógicos.</p>
+{% if candidates %}
+  {% for item in candidates %}
+  <div class="card">
+    <h3>{{ item.response_id }}</h3>
+    <p>Prioridade: {{ item.priority }}</p>
+    <p>{{ item.reason }}</p>
+    <form method="post">
+      <input type="hidden" name="response_id" value="{{ item.response_id }}">
+      <label>Rótulo corrigido</label>
+      <select name="corrected_label">
+        <option value="correct">Correta</option>
+        <option value="partially_correct">Parcial</option>
+        <option value="incorrect">Incorreta</option>
+        <option value="vague">Vaga</option>
+      </select>
+      <label>Feedback editado</label>
+      <textarea name="edited_feedback" rows="3"></textarea>
+      <input type="hidden" name="decision" value="approved">
+      <button type="submit">Salvar anotação</button>
+    </form>
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="card"><p>Nenhum candidato de active learning no momento.</p></div>
+{% endif %}
+{% endblock %}

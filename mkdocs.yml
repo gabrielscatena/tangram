@@ -1,0 +1,35 @@
+site_name: Tangram AI Feedback Lab
+site_description: Mock não produtivo de IA educacional com human-in-the-loop e tracing.
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    primary: deep purple
+    accent: deep purple
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+nav:
+  - Visão geral: index.md
+  - Arquitetura: architecture.md
+  - Workflows: workflows.md
+  - Diagramas: diagrams.md
+  - MVP técnico: technical_mvp.md
+  - Vector Database: vector_database.md
+  - Dados: data_model.md
+  - Human-in-the-loop: human_in_the_loop.md
+  - MLflow e tracing: mlflow_tracing.md
+  - Privacidade: privacy_by_design.md
+  - RACI: raci.md
+  - Limites do mock: limits.md

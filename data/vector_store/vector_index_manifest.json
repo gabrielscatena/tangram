@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-06-17T18:18:54.832182+00:00",
+  "pipeline_version": "raw_pdf_tfidf_v1.0",
+  "pipeline_steps": [
+    "data/raw/**/*.pdf",
+    "pdf_text_extraction_by_page_with_pypdf",
+    "versioned_character_chunking_with_overlap",
+    "data/processed/source_chunks.jsonl",
+    "tfidf_embeddings",
+    "local_vector_store_artifacts",
+    "vector_index_manifest.json"
+  ],
+  "raw_dir": "data\\raw",
+  "processed_dir": "data\\processed",
+  "vector_dir": "data\\vector_store",
+  "chunking": {
+    "chunk_size": 900,
+    "chunk_overlap": 150
+  },
+  "source_files": [
+    {
+      "path": "data\\raw\\bcb\\art8_educacao_financeira_escolas.pdf",
+      "relative_path": "bcb\\art8_educacao_financeira_escolas.pdf",
+      "sha256": "5360e49ca367a01d758081a316fa183d0b6667e3a25b1a4e58194ba32e039145",
+      "size_bytes": 734014
+    },
+    {
+      "path": "data\\raw\\bcb\\Matriz_Geral_Letramento_Financeiro.pdf",
+      "relative_path": "bcb\\Matriz_Geral_Letramento_Financeiro.pdf",
+      "sha256": "bb302457fe03c9d5b6282d37ea17ba881fb53c85ddf55282649c58189db18a2e",
+      "size_bytes": 24356515
+    },
+    {
+      "path": "data\\raw\\bncc\\BNCC_20dez_site.pdf",
+      "relative_path": "bncc\\BNCC_20dez_site.pdf",
+      "sha256": "7d0004aacde591d4d898cbdf950ab7ed28e875f837dab12bb88cb15567cdf180",
+      "size_bytes": 2458832
+    },
+    {
+      "path": "data\\raw\\mec_tct\\caderno_economia_consolidado_v_final_09_03_2022.pdf",
+      "relative_path": "mec_tct\\caderno_economia_consolidado_v_final_09_03_2022.pdf",
+      "sha256": "3814d34580849e0a47f6b17d92604ef6b54ad20cc342dd6b09f0552dc72123a1",
+      "size_bytes": 2131332
+    },
+    {
+      "path": "data\\raw\\mec_tct\\contextualizacao_temas_contemporaneos.pdf",
+      "relative_path": "mec_tct\\contextualizacao_temas_contemporaneos.pdf",
+      "sha256": "d9cdd4ccd4c14cae24d8ff6fd75ee724ec2406faaa1305b7e1a95fb75533dc41",
+      "size_bytes": 802707
+    },
+    {
+      "path": "data\\raw\\mec_tct\\guia_pratico_temas_contemporaneos.pdf",
+      "relative_path": "mec_tct\\guia_pratico_temas_contemporaneos.pdf",
+      "sha256": "2c156e39a550d73de7bb89c76232daa10c7f1dfeb7727a379c96867a9fcf3a37",
+      "size_bytes": 837157
+    }
+  ],
+  "counts": {
+    "source_files": 6,
+    "chunks": 1677
+  },
+  "processed_outputs": {
+    "source_pages_path": "data\\processed\\source_pages.jsonl",
+    "source_chunks_path": "data\\processed\\source_chunks.jsonl",
+    "source_pages_sha256": "ebfd42b819e067ed85b203102cacf72a0251724d74cab06300bfdb7cfb8f17bf",
+    "source_chunks_sha256": "d1b6ec740cf4083e464d06388be3e8f4740eb399cd0ffe1f1afdc51b0746802e"
+  },
+  "vector_index": {
+    "backend": "tfidf_local_vector_store",
+    "vectorizer_path": "data\\vector_store\\tfidf_vectorizer.joblib",
+    "matrix_path": "data\\vector_store\\tfidf_matrix.npz",
+    "indexed_chunks_path": "data\\vector_store\\indexed_chunks.jsonl",
+    "indexed_chunks": 1677,
+    "matrix_shape": [
+      1677,
+      50000
+    ],
+    "artifact_hashes": {
+      "vectorizer_sha256": "2500d1c2bc5dbd3d01edf2a6e01999cf22263278f8b6eb99708da2e5f9a95459",
+      "matrix_sha256": "6d16be79178bac1954929854de574bc1901fb17876f979053ac86534f58c9958",
+      "indexed_chunks_sha256": "d1b6ec740cf4083e464d06388be3e8f4740eb399cd0ffe1f1afdc51b0746802e"
+    }
+  },
+  "notes": [
+    "This mock uses a local TF-IDF vector store for reproducibility and CPU-only execution.",
+    "For production, replace this backend with Chroma, FAISS, pgvector, Qdrant, OpenSearch, or a managed vector database.",
+    "Source PDFs remain auditable through SHA256 hashes and relative paths."
+  ]
+}

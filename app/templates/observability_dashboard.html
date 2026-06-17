@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Observability Dashboard</h1>
+<div class="grid">
+  <div class="card"><h3>Trace steps</h3><p class="big-number">{{ steps|length }}</p></div>
+  <div class="card"><h3>Traces únicos</h3><p class="big-number">{{ trace_ids|length }}</p></div>
+  <div class="card"><h3>Modelos registrados</h3><p class="big-number">{{ models|length }}</p></div>
+</div>
+
+<h2>Como gerar e ver um trace</h2>
+<div class="card compact">
+  <ol>
+    <li>Abra <a class="inline-link" href="/student">Student Playground</a>.</li>
+    <li>Clique em <strong>Gerar feedback</strong>.</li>
+    <li>Volte para esta aba e clique em <strong>Abrir trace</strong> abaixo.</li>
+  </ol>
+</div>
+
+<h2>Traces disponíveis</h2>
+<div class="trace-list">
+{% for trace_id in trace_ids[:10] %}
+  <a class="card card-link compact trace-step" href="/observability/traces/{{ trace_id }}">
+    <strong>{{ trace_id }}</strong><br>
+    <span class="muted">Abrir trace detalhado</span>
+  </a>
+{% else %}
+  <div class="card"><p>Sem traces ainda. Execute o <a class="inline-link" href="/student">Student Playground</a> para gerar o primeiro trace.</p></div>
+{% endfor %}
+</div>
+
+<h2>Model Registry Mock</h2>
+{% for model in models %}
+<div class="card compact">
+  <strong>{{ model.name }} {{ model.version }}</strong><br>
+  <span class="muted">{{ model.purpose }} • {{ model.runtime }}</span>
+</div>
+{% endfor %}
+
+<h2>Últimos trace steps</h2>
+{% for step in steps[-10:] %}
+<a class="card card-link compact" href="/observability/traces/{{ step.trace_id }}">
+  <strong>{{ step.step_name }}</strong> — {{ step.latency_ms }} ms<br>
+  <span class="muted">{{ step.trace_id }} • {{ step.response_id }}</span>
+</a>
+{% else %}
+<div class="card"><p>Sem trace steps ainda. Execute o Student Playground.</p></div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Student Playground</h1>
+<p class="muted">
+  Selecione uma questão do banco com 50 perguntas. O feedback usa a resposta do aluno,
+  os metadados da questão e o vector DB disponível.
+</p>
+<p class="muted"><strong>Vector backend:</strong> {{ vector_backend }}</p>
+
+<form method="post" class="card form-card">
+  <label>Aluno demo</label>
+  <input name="student_id" value="aluno-demo-001">
+
+  <label>Questão</label>
+  <select name="question_id" id="question-select">
+    {% for question in questions %}
+      <option
+        value="{{ question.question_id }}"
+        data-prompt="{{ question.prompt|e }}"
+        data-grade="{{ question.grade_level|e }}"
+        data-topic="{{ question.financial_topic|e }}"
+        data-bncc="{{ question.bncc_skill|e }}"
+        data-bloom="{{ question.bloom_level|e }}"
+        data-difficulty="{{ question.difficulty|e }}"
+        data-expected="{{ question.expected_answer|e }}"
+        {% if question.question_id == selected_question.question_id %}selected{% endif %}
+      >
+        {{ question.question_id }} — {{ question.title }} [{{ question.difficulty }}]
+      </option>
+    {% endfor %}
+  </select>
+
+  <div class="question-box">
+    <h3 id="question-title">{{ selected_question.title }}</h3>
+    <p id="question-prompt">{{ selected_question.prompt }}</p>
+    <div class="metrics">
+      <span id="question-grade">Série: {{ selected_question.grade_level }}</span>
+      <span id="question-topic">Tópico: {{ selected_question.financial_topic }}</span>
+      <span id="question-bloom">Bloom: {{ selected_question.bloom_level }}</span>
+      <span id="question-difficulty">Dificuldade: {{ selected_question.difficulty }}</span>
+    </div>
+    <p class="muted" id="question-bncc">BNCC: {{ selected_question.bncc_skill }}</p>
+    <p class="muted" id="question-expected">Resposta esperada: {{ selected_question.expected_answer }}</p>
+  </div>
+
+  <label>Resposta discursiva</label>
+  <textarea name="raw_text" rows="6">Eu guardaria uma parte porque posso precisar depois e compraria só o necessário.</textarea>
+  <button type="submit">Gerar feedback</button>
+</form>
+
+{% if result %}
+<div class="card result-card">
+  <h2>Feedback</h2>
+  <p>{{ result.feedback.feedback_text }}</p>
+  <div class="metrics">
+    <span>Questão: {{ result.response.question_id }}</span>
+    <span>Rótulo: {{ result.classification.conceptual_label.value }}</span>
+    <span>Confiança: {{ result.classification.confidence_score }}</span>
+    <span>Ambiguidade: {{ result.ambiguity.ambiguity_score }}</span>
+    <span>Revisão humana: {{ result.ambiguity.human_review_required }}</span>
+  </div>
+  <h3>Contextos recuperados</h3>
+  <ul class="context-list">
+    {% for item in result.retrieved_context %}
+      <li>
+        <strong>{{ item.source_type }}</strong> — score {{ item.similarity }}
+        {% if item.metadata.source_path %}
+          <br><span class="muted">{{ item.metadata.source_path }}, página {{ item.metadata.page_number }}</span>
+        {% endif %}
+        <br><span class="muted">{{ item.text[:240] }}...</span>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="muted">Trace: <a href="/observability/traces/{{ result.trace_id }}">{{ result.trace_id }}</a></p>
+</div>
+{% endif %}
+
+<script>
+const select = document.getElementById("question-select");
+function updateQuestionBox() {
+  const option = select.options[select.selectedIndex];
+  const title = option.text.replace(/^q\d+\s+—\s+/, "").replace(/\s+\[.*\]$/, "");
+  document.getElementById("question-title").textContent = title;
+  document.getElementById("question-prompt").textContent = option.dataset.prompt;
+  document.getElementById("question-grade").textContent = "Série: " + option.dataset.grade;
+  document.getElementById("question-topic").textContent = "Tópico: " + option.dataset.topic;
+  document.getElementById("question-bloom").textContent = "Bloom: " + option.dataset.bloom;
+  document.getElementById("question-difficulty").textContent = "Dificuldade: " + option.dataset.difficulty;
+  document.getElementById("question-bncc").textContent = "BNCC: " + option.dataset.bncc;
+  document.getElementById("question-expected").textContent = "Resposta esperada: " + option.dataset.expected;
+}
+select.addEventListener("change", updateQuestionBox);
+</script>
+{% endblock %}

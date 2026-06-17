@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Mock não produtivo</p>
+  <h1>Suíte demonstrativa para feedback discursivo com IA, rastreabilidade e human-in-the-loop.</h1>
+  <p>Este laboratório mostra como uma arquitetura educacional pode combinar rubricas BNCC/Bloom, busca semântica, classificação leve, score de ambiguidade, feedback controlado e revisão humana.</p>
+</section>
+<div class="grid">
+  <a class="card card-link" href="/student"><h3>Student Playground</h3><p>Simule uma resposta discursiva e veja o feedback gerado.</p></a>
+  <a class="card card-link" href="/teacher/review"><h3>Teacher Review</h3><p>Veja como respostas ambíguas são roteadas para revisão humana.</p></a>
+  <a class="card card-link" href="/annotation"><h3>Annotation Studio</h3><p>Priorize casos de active learning para especialistas.</p></a>
+  <a class="card card-link" href="/observability"><h3>Observability</h3><p>Inspecione traces, versões de modelo e etapas do pipeline.</p></a>
+</div>
+{% endblock %}

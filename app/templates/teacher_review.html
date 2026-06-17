@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Teacher Review Console</h1>
+<p class="muted">Respostas encaminhadas para revisão humana por baixa confiança ou alta ambiguidade.</p>
+{% if pending %}
+  {% for item in pending %}
+  <div class="card">
+    <h3>{{ item.response_id }}</h3>
+    <p>{{ item.clean_text }}</p>
+    <p class="muted">Aluno pseudonimizado: {{ item.pseudo_student_id }}</p>
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="card"><p>Nenhuma resposta pendente. Envie uma resposta vaga no Student Playground para testar.</p></div>
+{% endif %}
+{% endblock %}

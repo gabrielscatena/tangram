@@ -1,0 +1,68 @@
+{
+  "package_name": "tangram_original_sources",
+  "created_at_utc": "2026-06-17T16:53:29Z",
+  "purpose": "Raw original/public source files for building BNCC/TCT/financial-education vector database for Tangram AI Feedback Lab.",
+  "documents": [
+    {
+      "source_name": "BNCC_20dez_site",
+      "local_path": "data/raw/bncc/BNCC_20dez_site.pdf",
+      "source_url": "https://basenacionalcomum.mec.gov.br/images/BNCC_20dez_site.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 2458832,
+      "sha256": "7d0004aacde591d4d898cbdf950ab7ed28e875f837dab12bb88cb15567cdf180",
+      "pdf_pages": 472,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    },
+    {
+      "source_name": "caderno_economia_consolidado_v_final_09_03_2022",
+      "local_path": "data/raw/mec_tct/caderno_economia_consolidado_v_final_09_03_2022.pdf",
+      "source_url": "https://basenacionalcomum.mec.gov.br/images/implementacao/cadernos_tematicos/caderno_economia_consolidado_v_final_09_03_2022.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 2131332,
+      "sha256": "3814d34580849e0a47f6b17d92604ef6b54ad20cc342dd6b09f0552dc72123a1",
+      "pdf_pages": 76,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    },
+    {
+      "source_name": "contextualizacao_temas_contemporaneos",
+      "local_path": "data/raw/mec_tct/contextualizacao_temas_contemporaneos.pdf",
+      "source_url": "https://basenacionalcomum.mec.gov.br/images/implementacao/contextualizacao_temas_contemporaneos.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 802707,
+      "sha256": "d9cdd4ccd4c14cae24d8ff6fd75ee724ec2406faaa1305b7e1a95fb75533dc41",
+      "pdf_pages": 20,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    },
+    {
+      "source_name": "guia_pratico_temas_contemporaneos",
+      "local_path": "data/raw/mec_tct/guia_pratico_temas_contemporaneos.pdf",
+      "source_url": "https://basenacionalcomum.mec.gov.br/images/implementacao/guia_pratico_temas_contemporaneos.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 837157,
+      "sha256": "2c156e39a550d73de7bb89c76232daa10c7f1dfeb7727a379c96867a9fcf3a37",
+      "pdf_pages": 26,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    },
+    {
+      "source_name": "Matriz_Geral_Letramento_Financeiro",
+      "local_path": "data/raw/bcb/Matriz_Geral_Letramento_Financeiro.pdf",
+      "source_url": "https://aprendervalor.bcb.gov.br/content/cidadaniafinanceira/documentos_cidadania/Matriz%20Geral.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 24356515,
+      "sha256": "bb302457fe03c9d5b6282d37ea17ba881fb53c85ddf55282649c58189db18a2e",
+      "pdf_pages": 19,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    },
+    {
+      "source_name": "art8_educacao_financeira_escolas",
+      "local_path": "data/raw/bcb/art8_educacao_financeira_escolas.pdf",
+      "source_url": "https://www.bcb.gov.br/nor/relcidfin/docs/art8_educacao_finanaceira_escolas.pdf",
+      "downloaded_at_utc": "2026-06-17T16:53:29Z",
+      "file_size_bytes": 734014,
+      "sha256": "5360e49ca367a01d758081a316fa183d0b6667e3a25b1a4e58194ba32e039145",
+      "pdf_pages": 9,
+      "redistribution_note": "Publicly accessible official/public document. Check institutional terms of use before production redistribution."
+    }
+  ],
+  "bloom_note": "Bloom/Krathwohl PDFs were not redistributed due copyright uncertainty; see data/raw/bloom_reference/bloom_sources_manifest.json."
+}
